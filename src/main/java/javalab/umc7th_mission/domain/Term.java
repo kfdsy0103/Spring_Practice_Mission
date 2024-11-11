@@ -1,6 +1,8 @@
 package javalab.umc7th_mission.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import javalab.umc7th_mission.domain.common.BaseEntity;
 import lombok.*;
 
@@ -15,9 +17,10 @@ public class Term extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 20, nullable = false)
+    @NotNull
+    @Size(max = 20)
     private String title;
 
-    @Column(nullable = false)
+    @NotNull
     private String content;
 }

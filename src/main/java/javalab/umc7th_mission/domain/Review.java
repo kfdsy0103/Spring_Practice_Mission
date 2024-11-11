@@ -1,6 +1,7 @@
 package javalab.umc7th_mission.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import javalab.umc7th_mission.domain.common.BaseEntity;
 import lombok.*;
 
@@ -18,10 +19,10 @@ public class Review extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @NotNull
     private Integer score;
 
-    @Column(nullable = false)
+    @NotNull
     private String content;
 
     @OneToMany(mappedBy = "review")

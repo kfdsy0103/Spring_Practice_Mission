@@ -1,6 +1,8 @@
 package javalab.umc7th_mission.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import javalab.umc7th_mission.domain.common.BaseEntity;
 import javalab.umc7th_mission.domain.enums.AlarmType;
 import lombok.*;
@@ -17,13 +19,15 @@ public class Alarm extends BaseEntity {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 20)
+    @NotNull
+    @Size(max = 20)
     private AlarmType alarmType;
 
-    @Column(nullable = false, length = 30)
+    @NotNull
+    @Size(max = 30)
     private String title;
 
-    @Column(nullable = false)
+    @NotNull
     private String content;
 
     private boolean isConfirmed;

@@ -1,6 +1,8 @@
 package javalab.umc7th_mission.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import javalab.umc7th_mission.domain.common.BaseEntity;
 import javalab.umc7th_mission.domain.mapping.MemberMission;
 import lombok.*;
@@ -20,10 +22,11 @@ public class Mission extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 20, nullable = false)
+    @NotNull
+    @Size(max = 20)
     private String content;
 
-    @Column(nullable = false)
+    @NotNull
     private Integer point;
 
     private LocalDate deadline;
