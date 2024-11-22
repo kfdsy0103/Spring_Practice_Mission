@@ -2,14 +2,12 @@ package javalab.umc7th_mission.repository.MissionRepository;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.JPAExpressions;
-import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import ext.javalab.umc7th_mission.domain.QMission;
 import ext.javalab.umc7th_mission.domain.QRestaurant;
 import ext.javalab.umc7th_mission.domain.mapping.QMemberMission;
 import javalab.umc7th_mission.web.dto.MissionDTO;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 

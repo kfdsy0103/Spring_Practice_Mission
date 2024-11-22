@@ -25,10 +25,6 @@ public class Review extends BaseEntity {
     @NotNull
     private String content;
 
-    @OneToMany(mappedBy = "review")
-    @Builder.Default
-    private List<ReviewImage> reviewImageList = new ArrayList<>();
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
@@ -36,4 +32,22 @@ public class Review extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
+
+    @OneToMany(mappedBy = "review", cascade = CascadeType.ALL)
+    @Builder.Default
+    private List<ReviewImage> reviewImageList = new ArrayList<>();
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    // 연관관계 편의 메서드
+    public void addImage(ReviewImage image) {
+        this.reviewImageList.add(image);
+        image.setReview(this);
+    }
 }

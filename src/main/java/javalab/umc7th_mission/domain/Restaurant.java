@@ -35,8 +35,18 @@ public class Restaurant extends BaseEntity {
     private Region region;
 
     @OneToMany(mappedBy = "restaurant")
+    @Builder.Default
     private List<Review> reviewList = new ArrayList<>();
 
     @OneToMany(mappedBy = "restaurant")
+    @Builder.Default
     private List<Mission> missionList = new ArrayList<>();
+
+    public void setRegion(Region region) {
+        this.region = region;
+    }
+
+    public void setFoodCategory(FoodCategory foodCategory) {
+        this.foodCategory = foodCategory;
+    }
 }
