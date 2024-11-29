@@ -39,8 +39,11 @@ public enum ErrorStatus implements BaseErrorCode {
     FILE_EXCEPTION(HttpStatus.BAD_REQUEST, "FILE4001", "파일이 등록되지 않았습니다."),
     
     // 미션 관련 에러
-    ALREADY_CHALLENGE(HttpStatus.BAD_REQUEST, "MISSION4001", "이미 수행 중인 미션입니다.");
-    
+    ALREADY_CHALLENGE(HttpStatus.BAD_REQUEST, "MISSION4001", "이미 수행 중인 미션입니다."),
+
+    // 페이징 관련 에러
+    PAGE_NOT_VALID(HttpStatus.BAD_REQUEST, "PAGE4001", "페이징 번호가 유효하지 않습니다.");
+
     private final HttpStatus httpStatus;
     private final String code;
     private final String message;

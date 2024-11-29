@@ -36,4 +36,6 @@ public class MemberMission extends BaseEntity {
     public void setMission(Mission mission) {
         this.mission = mission;
     }
+
+    public void setStatus(MissionStatus status) { this.status = status; }
 }

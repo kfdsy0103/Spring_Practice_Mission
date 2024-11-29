@@ -4,6 +4,7 @@ import javalab.umc7th_mission.converter.MissionConverter;
 import javalab.umc7th_mission.domain.Member;
 import javalab.umc7th_mission.domain.Mission;
 import javalab.umc7th_mission.domain.Restaurant;
+import javalab.umc7th_mission.domain.enums.MissionStatus;
 import javalab.umc7th_mission.domain.mapping.MemberMission;
 import javalab.umc7th_mission.repository.MemberMissionRepository.MemberMissionRepository;
 import javalab.umc7th_mission.repository.MemberRepository.MemberRepository;
@@ -49,4 +50,15 @@ public class MissionCommandServiceImpl implements MissionCommandService {
 
         return memberMissionRepository.save(newMemberMission);
     }
+
+    @Override
+    @Transactional
+    public MemberMission completeMission(MissionRequestDTO.CompleteDto request) {
+        MemberMission memberMission = memberMissionRepository.findById(request.getMemberMissionId()).get();
+        memberMission.setStatus(MissionStatus.COMPLETE);
+
+        return memberMission;
+    }
+
+
 }

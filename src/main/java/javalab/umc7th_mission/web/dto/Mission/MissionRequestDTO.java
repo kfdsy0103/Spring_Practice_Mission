@@ -37,4 +37,12 @@ public class MissionRequestDTO {
         @NotNull
         MissionStatus status;
     }
+
+    @Getter
+    public static class CompleteDto {
+        @NotNull
+        Long memberMissionId;
+        @ExistMember
+        String memberEmail;
+    }
 }

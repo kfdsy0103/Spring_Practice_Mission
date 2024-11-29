@@ -7,4 +7,5 @@ import javalab.umc7th_mission.web.dto.Mission.MissionRequestDTO;
 public interface MissionCommandService {
     Mission joinMission(MissionRequestDTO.JoinDto request);
     MemberMission challengeMission(MissionRequestDTO.ChallengeDto request);
+    MemberMission completeMission(MissionRequestDTO.CompleteDto request);
 }
