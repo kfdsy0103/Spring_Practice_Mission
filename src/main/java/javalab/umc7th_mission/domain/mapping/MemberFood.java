@@ -24,4 +24,8 @@ public class MemberFood extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "food_id")
     private FoodCategory foodCategory;
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
 }

@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Size;
 import javalab.umc7th_mission.domain.common.BaseEntity;
 import javalab.umc7th_mission.domain.enums.Gender;
 import javalab.umc7th_mission.domain.enums.MemberStatus;
+import javalab.umc7th_mission.domain.enums.Role;
 import javalab.umc7th_mission.domain.enums.SocialType;
 import javalab.umc7th_mission.domain.mapping.MemberFood;
 import javalab.umc7th_mission.domain.mapping.MemberTerm;
@@ -36,6 +37,12 @@ public class Member extends BaseEntity {
     @Size(max = 30)
     private String email;
 
+    @Column(nullable = false)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     @NotNull
     @Size(max = 20)
     private String name;
@@ -47,18 +54,19 @@ public class Member extends BaseEntity {
     @Size(max = 50)
     private String address;
 
+    @NotNull
+    @Size(max = 50)
+    private String specAddress;
+
     private Integer point;
 
     @Enumerated(EnumType.STRING)
-    @Size(max = 10)
     private Gender gender;
 
     @Enumerated(EnumType.STRING)
-    @Size(max = 10)
     private SocialType socialType;
 
     @Enumerated(EnumType.STRING)
-    @Size(max = 10)
     @ColumnDefault("'ACTIVE'")
     private MemberStatus status;
 
@@ -79,4 +87,8 @@ public class Member extends BaseEntity {
     @OneToMany(mappedBy = "member")
     @Builder.Default
     private List<MemberFood> memberFoodList = new ArrayList<>();
+
+    public void encodePassword(String password) {
+        this.password = password;
+    }
 }
